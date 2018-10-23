@@ -10,4 +10,4 @@ find /tmp/pkg -type d -exec chmod u+x {} \;
 
 # Do the actual building
 cd /tmp/pkg
-sudo -u notroot makepkg -fs --noconfirm
+sudo -HEu notroot makepkg -fs --noconfirm

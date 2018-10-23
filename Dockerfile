@@ -16,6 +16,8 @@ RUN echo "notroot ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/notroot
 RUN sudo -u notroot mkdir /home/notroot/.gnupg
 RUN sudo -u notroot touch /home/notroot/.gnupg/gpg.conf
 RUN sudo -u notroot echo "keyserver-options auto-key-retrieve" > /home/notroot/.gnupg/gpg.conf
+RUN sudo -u notroot echo "keyserver pgp.mit.edu" >> /home/notroot/.gnupg/gpg.conf
+
 
 # Build the package
 WORKDIR /pkg
