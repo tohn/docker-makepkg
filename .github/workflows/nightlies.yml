@@ -17,4 +17,4 @@ jobs:
           git add .rebuild &&
           git -c user.name="🤖" -c user.email="robot@barrera.io" commit -m 'Trigger rebuild'
       - name: Push change
-        run: git push origin HEAD
+        run: git push origin master
