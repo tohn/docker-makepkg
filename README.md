@@ -10,7 +10,7 @@ Usage with travis
 
 Generally, this should be enough:
 
-```
+```bash
 sudo: required
 
 services:
@@ -23,7 +23,7 @@ script:
 Usage locally
 -------------
 
-```
+```bash
 docker run -v $PWD:/pkg whynothugo/makepkg
 
 # Or export the built package file to the workding directory
