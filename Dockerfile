@@ -12,17 +12,14 @@ RUN useradd -m notroot
 RUN echo "notroot ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/notroot
 
 # continue as notroot
-USER notroot
 WORKDIR /home/notroot
 
 # auto-fetch GPG keys (for checking signatures)
-RUN mkdir .gnupg && \
+RUN su - notroot -c "mkdir .gnupg && \
 	touch .gnupg/gpg.conf && \
-	echo "keyserver-options auto-key-retrieve" >.gnupg/gpg.conf
+	echo 'keyserver-options auto-key-retrieve' >.gnupg/gpg.conf"
 
 # install yay (for building AUR dependencies)
-RUN git clone https://aur.archlinux.org/yay-bin.git
-WORKDIR /home/notroot/yay-bin
-RUN makepkg --noconfirm --syncdeps --rmdeps --install --clean
-WORKDIR /home/notroot
+RUN su - notroot -c "git clone https://aur.archlinux.org/yay-bin.git && \
+	cd yay-bin && makepkg --noconfirm --syncdeps --rmdeps --install --clean"
 RUN rm -rf yay-bin
