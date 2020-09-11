@@ -1,8 +1,8 @@
-FROM archlinux/base
+FROM archlinux
 
 # install stuff
 RUN pacman -Sy --noconfirm archlinux-keyring base-devel namcap \
-		pacman-contrib git neovim && \
+	pacman-contrib git neovim && \
 	pacman -Syu --noconfirm
 
 # makepkg cannot (and should not) be run as root
